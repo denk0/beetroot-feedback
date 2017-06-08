@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+
+@import "quill/quill.snow";
+
+body, html {
+	min-height: 100%;
+	height: auto;
+}
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+#beetroot-feedback {
+	padding: 3px 4px;
+	position: fixed; 
+	right: 10px;
+	bottom: 10px;
+	outline: none; 
+	background-color: rgba(81, 161, 215, 1);
+	cursor: pointer;
+	border-radius: 23px;
+	border: none;
+	transition: opacity .2s ease-in;
+	z-index: 100;
+	box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.35);
+}
+#beetroot-loading-block {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 42px;
+	margin-left: 10px;
+}
+#beetroot-image-loading {
+	height: 22px;
+	width: 22px;
+	background: url(../images/loading.gif) 0 0 no-repeat;
+	background-size: cover;
+}
+#beetroot-loading {
+	position: absolute;
+	bottom: -30px;
+	left: 0;
+	width: 100%;
+	color: #fff;
+	text-align: left;
+}
+#beetroot-feedback span {
+	display: inline-block;
+}
+#beetroot-feedback .logo {
+	width: 36px;
+	height: 36px;
+	position: relative;
+	border-radius: 50%;
+	transition: background-color .2s ease-in;
+	transition-delay: .3s;
+	vertical-align: middle;
+}
+#beetroot-feedback .logo svg {
+	position: absolute;
+	top: 52%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#beetroot-feedback .logo svg path {
+	fill-rule: evenodd;
+	clip-rule: evenodd;
+	fill: #fff;
+	transition: fill .2s ease-in;
+	transition-delay: .3s;
+}
+#beetroot-feedback .text {
+	width: 0;
+	padding: 0;
+	overflow: hidden;
+	transition: .3s cubic-bezier(0.2, 0.29, 0.79, 0.07);
+	transition-property: width, padding;
+	vertical-align: middle;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 500;
+	font-family: Roboto, sans-serif;
+	white-space: nowrap
+}
+
+#beetroot-feedback:hover .logo {
+	background-color: #fff;
+}
+#beetroot-feedback:hover .logo svg path {
+	fill: rgba(81, 161, 215, 1);
+}
+#beetroot-feedback:hover .text {
+	width: 140px;
+	padding: 0 12px;
+}
+#beetroot-feedback.active {
+	opacity: 0;
+}
+#beetroot-feedback-area {
+	z-index: 1001;
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	background-color: transparent; 
+	outline: 3px dashed white;
+}
+.beetroot-overlay {
+	z-index: 1000; 
+	position: absolute; 
+	background-color: rgba(0,0,0, .65);
+	width: 100%; 
+}
+#beetroot-overlay-top {
+	left: 0;
+	top: 0;
+}
+#beetroot-overlay-right {
+	right: 0;
+	width: 50%;
+}
+#beetroot-overlay-bottom {
+	left: 0;
+}
+#beetroot-overlay-left {
+	left: 0;
+	width: 50%;
+}
+#beetroot-approve-buttons {
+	position: absolute;
+	bottom: -60px;
+	right: 0;
+	min-width: 250px;
+}
+#beetroot-approve-buttons button,
+#beetroot-feedback-popup #send-beetroot-feedback,
+#beetroot-feedback-popup #cancel-beetroot-feedback {
+	padding: 3px 4px;
+	outline: none;
+	border: none;
+	background-color: rgba(81, 161, 215, 1);
+	cursor: pointer;
+	border-radius: 23px;
+	z-index: 100;
+	box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.35);
+	transition: all .2s ease-in;
+	position: relative;
+}
+#beetroot-approve-buttons button:before,
+#beetroot-feedback-popup #send-beetroot-feedback:before,
+#beetroot-feedback-popup #cancel-beetroot-feedback:before {
+	content: '';
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+	background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.15) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.15) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+	position: absolute;
+	border-radius: 23px;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	transition: opacity .2s ease-in;
+}
+#beetroot-approve-buttons button:hover:before,
+#beetroot-feedback-popup #send-beetroot-feedback:hover:before,
+#beetroot-feedback-popup #cancel-beetroot-feedback:hover:before {
+	opacity: 1;
+}
+#beetroot-approve-buttons #beetroot-cancel-screen,
+#beetroot-feedback-popup #cancel-beetroot-feedback {
+	background-color: rgba(223, 66, 72, 1);
+	margin-right: 10px;
+}
+#beetroot-approve-buttons #beetroot-cancel-screen i,
+#beetroot-feedback-popup #cancel-beetroot-feedback i {
+	color: rgba(223, 66, 72, 1);
+}
+#beetroot-approve-buttons #beetroot-approve-screen,
+#beetroot-feedback-popup #send-beetroot-feedback {
+	background-color: rgba(57, 176, 115, 1);
+}
+#beetroot-approve-buttons #beetroot-approve-screen i,
+#beetroot-feedback-popup #send-beetroot-feedback i {
+	color: rgba(57, 176, 115, 1);
+}
+#beetroot-approve-buttons button .icon,
+#beetroot-feedback-popup #send-beetroot-feedback .icon,
+#beetroot-feedback-popup #cancel-beetroot-feedback .icon {
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	position: relative;
+	border-radius: 50%;
+	background-color: #fff;
+	transition-delay: .3s;
+	vertical-align: middle;
+}
+#beetroot-approve-buttons button i.fa,
+#beetroot-feedback-popup #cancel-beetroot-feedback i.fa,
+#beetroot-feedback-popup #send-beetroot-feedback i.fa{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#beetroot-approve-buttons button .text,
+#beetroot-feedback-popup #send-beetroot-feedback .text,
+#beetroot-feedback-popup #cancel-beetroot-feedback .text {
+	vertical-align: middle;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 500;
+	font-family: Roboto, sans-serif;
+	white-space: nowrap;
+	padding: 0 12px;
+	position: relative;
+	z-index: 10;
+}
+#beetroot-feedback-popup {
+	z-index: 99999;
+	overflow-y: auto;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 80%;
+	max-height: 80vh;
+	transform: translate(-50%, -50%);
+	padding: 15px;
+	background-color: rgba(255, 255, 255, .97);
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+}
+#beetroot-feedback-popup img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+#beetroot-feedback-popup h2 {
+	text-align: center;
+	font-size: 20px;
+	font-weight: 500;
+	font-family: Roboto, sans-serif;
+	margin: 15px 0 20px;
+}
+#beetroot-feedback-title {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin: 15px 0;
+	border: 1px solid #e7e8e8;
+	border-radius: 5px;
+	box-shadow: none;
+}
+#beetroot-feedback-message {
+	height: 250px;
+	border: 1px solid #e7e8e8;
+	border-top: none;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+#beetroot-feedback-popup .ql-toolbar {
+	background-color: #e7e8e8;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 1px solid #cecece;
+	border-bottom: none;
+}
+#beetroot-feedback-popup #cancel-beetroot-feedback,
+#beetroot-feedback-popup #send-beetroot-feedback {
+	margin-top: 15px;
+}

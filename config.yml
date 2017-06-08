@@ -1,0 +1,16 @@
+COMPATIBILITY:
+  - "last 2 versions"
+  - "ie >= 9"
+  - "ios >= 7"
+PATHS:
+  dist: "dist"
+  assets:
+    - "src/**/*"
+    - "!src/{images,scripts,styles}/**/*"
+  sass:
+    - "src/plugins/quill/quill.snow.scss"
+  javascript:
+    - "src/scripts/html2canvas/html2canvas.js"
+    - "src/scripts/quill/quill.min.js"
+    - "src/scripts/!(app).js"
+    - "src/scripts/app.js"

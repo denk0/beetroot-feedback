@@ -1,0 +1,46 @@
+{
+  "name": "beetroot_feedback",
+  "version": "1.0.0",
+  "description": "Screen capture plugin with sending to Gitlab issues",
+  "main": "gulpfile.babel.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build --production"
+  },
+  "author": "Vlad Romanenko <vladyslav@beetroot.se>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^3.4.1",
+    "gulp-cli": "^1.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-extname": "^0.2.2",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
+    "js-yaml": "^3.8.4",
+    "rimraf": "^2.6.1",
+    "yargs": "^8.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.beetroot.se/vromanenko/feedback_plugin.git"
+  },
+  "bugs": {
+    "url": "http://git.beetroot.se/vromanenko/feedback_plugin/issues",
+    "email": "vladyslav@beetroot.se"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "private": true
+}
