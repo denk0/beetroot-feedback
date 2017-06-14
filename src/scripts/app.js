@@ -22,7 +22,7 @@
 
             // General changes
             document.addEventListener('click', preventDef);
-
+            
             document.body.style.cursor = 'url(feedback/dist/images/bleed.svg), crosshair';
             // Creating overlay
             let overlayTop = document.createElement('div'),
