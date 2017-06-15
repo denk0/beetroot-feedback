@@ -4,7 +4,7 @@
 
     const projectUrl = 'http://localhost:8081/feedback/';
     const projectId = 56;
-    const token = 'wothDUvMVxQat7ugfzBi';
+    const token = 'GITLAB_PRIVATE_TOKEN';
 
     init();
     initStyles();
